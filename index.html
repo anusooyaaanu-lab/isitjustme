@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IsItJustMe — Outage Tracker</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <h1 class="logo">IsItJustMe<span>?</span></h1>
+  </header>
+
+  <section class="hero">
+    <h2>Power's out? Water's gone? Internet down?</h2>
+    <p>Find out if it's just you — or the whole area.</p>
+    <div class="hero-buttons">
+      <button id="showReportBtn" class="btn btn-primary">Report an Outage</button>
+      <button id="showFeedBtn" class="btn btn-secondary">Check My Area</button>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-number" id="statTotal">0</div>
+        <div class="stat-label">Total Reports</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number" id="statAreas">0</div>
+        <div class="stat-label">Areas Affected</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number" id="statConfirms">0</div>
+        <div class="stat-label">Confirmations</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORT FORM SECTION -->
+  <section id="reportSection" class="card-section hidden">
+    <h3>Report an Outage</h3>
+    <form id="reportForm">
+      <label for="type">Type of Outage</label>
+      <select id="type" required>
+        <option value="">-- Select --</option>
+        <option value="Power">⚡ Power</option>
+        <option value="Water">💧 Water</option>
+        <option value="Internet">📶 Internet</option>
+      </select>
+
+      <label for="area">Area / Locality</label>
+      <input type="text" id="area" placeholder="e.g. Anna Nagar, Chennai" required />
+
+      <label for="note">Note (optional)</label>
+      <input type="text" id="note" placeholder="Any extra detail..." />
+
+      <button type="submit" class="btn btn-primary full-width">Submit Report</button>
+    </form>
+    <p id="reportStatus"></p>
+  </section>
+
+  <!-- LIVE FEED SECTION -->
+  <section id="feedSection" class="card-section hidden">
+    <h3>Live Outage Feed</h3>
+    <div class="filter-chips">
+      <button class="chip active" data-filter="All">All</button>
+      <button class="chip" data-filter="Power">⚡ Power</button>
+      <button class="chip" data-filter="Water">💧 Water</button>
+      <button class="chip" data-filter="Internet">📶 Internet</button>
+    </div>
+    <input type="text" id="searchArea" placeholder="Filter by area name..." />
+    <div id="feedContainer" class="feed-container">
+      <p class="empty-msg">No reports yet. Be the first to report!</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built for Hack Devengers 1.0 💡</p>
+  </footer>
+
+  <!-- Firebase SDKs (compat version - no build tools needed) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
